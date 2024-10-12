@@ -1,15 +1,18 @@
 # $NetBSD: Makefile,v 1.19 2012/10/07 20:11:10 asau Exp $
 
-DISTNAME=		xrdp-0.5.0
+DISTNAME=		xrdp-0.10.1
+PKGREVISION=		0
 CATEGORIES=		net x11
-MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=xrdp/}
+MASTER_SITES=		${MASTER_SITE_GITHUB:=neutrinolabs/}
+GITHUB_PROJECT=		xrdp
+GITHUB_TAG=		v${PKGVERSION_NOREV}
 
-MAINTAINER=		mwilhelmy@users.sourceforge.net
-HOMEPAGE=		http://xrdp.sourceforge.net/
+MAINTAINER=		kyle@ambroffkao.com
+HOMEPAGE=		http://www.xrdp.org/
 COMMENT=		Remote Desktop Protocol server
 LICENSE=		gnu-gpl-v2
 
-USE_TOOLS+=		autoconf automake gmake
+USE_TOOLS+=		autoconf automake gmake bash nasm
 USE_LIBTOOL=		yes
 
 RCD_SCRIPTS=		xrdp sesman
@@ -43,6 +46,7 @@ SUBST_STAGE.paths=	post-patch
 SUBST_FILES.paths=	sesman/env.c
 SUBST_VARS.paths=	PREFIX
 
+CONFIG_SHELL=		bash
 GNU_CONFIGURE=		yes
 
 pre-configure:
